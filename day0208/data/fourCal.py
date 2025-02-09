@@ -44,6 +44,9 @@ class SafeFourCal(FourCal):
 
 a = FourCal(4, 2)
 b = FourCal(5, 7)
+
+
+print('- ' * 50 )
 print(a.add())
 print(b.mul())
 print(a.sub())
