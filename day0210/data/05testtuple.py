@@ -15,3 +15,4 @@ for value in range(len(mytuple)):
 datas = ['제주', 34.56756, '시청', 36.73982]
 for data in datas:
     print(data, end=" ")
+
