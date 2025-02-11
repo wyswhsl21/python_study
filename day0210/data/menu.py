@@ -1,10 +1,9 @@
-import handleMenu 
+import handleMenu
 
 if __name__ == '__main__':
-    menu =handleMenu.MenuFunc()
+    menu = handleMenu.MenuFunc()
 
-
-while True :
+while True:
     choice = menu.menu_open()
 
     try:
@@ -15,11 +14,11 @@ while True :
         elif choice == '3':
             menu.update_menu()
         elif choice == '4':
-            menu.delete_data()
+            menu.delete_menu()
         elif choice == '5':
-            menu.search_data()
+            menu.search_menu()
         elif choice == '9':
-            menu.exit_menu() 
+            menu.exit_menu()
         else:
             print('올바른 선택이 아닙니다. 다시 선택해주세요')
     except Exception as e:

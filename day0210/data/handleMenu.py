@@ -27,14 +27,14 @@ class MenuFunc:
                 print(f'{change_name} 메뉴의 가격이 {new_price}원으로 수정되었습니다.')
             else:
                 print('해당 메뉴가 존재하지 않습니다.')
-    def delete_data(self):
+    def delete_menu(self):
         pop_data = input('삭제할 data를 입력해주세요 :')
         if pop_data in self.menu:
             self.menu.pop(pop_data)
             print(f'선택한 {delete_data} data가 삭제 되었습니다')
         else:
             print('해당 메뉴가 존재하지 않습니다.')
-    def search_data(self):
+    def search_menu(self):
             serch_keyword = input('검색할 메뉴를 입력해주세요.')
             if serch_keyword in self.menu:
                 print(f'검색 결과 가격은 : {self.menu[serch_keyword]}')
