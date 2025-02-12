@@ -57,5 +57,6 @@ class luckyLotto:
              print(f'{i}',end=' ')
 
 
-luckyLotto()
+a= luckyLotto()
+
 
