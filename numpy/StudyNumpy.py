@@ -18,5 +18,5 @@ print(a.shape)
 print(b.shape)
 print(c.shape)
 
-c=a+b 
+ 
 
