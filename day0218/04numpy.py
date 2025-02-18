@@ -16,4 +16,17 @@ print('myarray 정보', len(myarray))
 print('myarray 정보', myarray.ndim)  #몇 차원인지 물어보는거!
 print('열', myarray.mean(axis=0))  # 열 세로
 print('열', myarray.mean(axis=1))  # 행 가로로
-print('열', myarray.mean(axis=2))  # 페이지지
+print('열', myarray.mean(axis=2))  # 페이지
+
+
+# 행렬 덧셈
+a= np.array([1,2,3])
+b= np.array([4,5,6])
+c = a*b
+print(c)
+print()
+# 행렬 덧셈
+x= [1,2,3]
+y= [4,5,6]
+z = x+y
+print(z)
