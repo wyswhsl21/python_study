@@ -27,7 +27,14 @@ data =['cat','dog','mouse']
 
 label_encoder=LabelEncoder()
 result = label_encoder.fit_transform(data)
-print(result)
+print('레이블 전',data)
+print('레이블 후',result)
+
+
+
+#해결 2] 레이블 인코더 된것 숫자를 다시 문자화 LabelDecoder화
+decoder = label_encoder.inverse_transform(result)
+print('문자화 후',decoder)
 
 
 
