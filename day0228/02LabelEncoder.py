@@ -37,7 +37,12 @@ decoder = label_encoder.inverse_transform(result)
 print('문자화 후',decoder)
 
 
+'''
+레이블 전 ['cat', 'dog', 'mouse', '여름@#&']
+레이블 후 [0 1 2 3]
+문자화 후 ['cat' 'dog' 'mouse' '여름@#&']
 
+'''
 
 
 
