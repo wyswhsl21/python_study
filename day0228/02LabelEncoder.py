@@ -26,14 +26,15 @@ data =['cat','dog','mouse']
 # 해결 1] LabelEncoder는 문자데이터 속도를 위해서 숫자화
 
 label_encoder=LabelEncoder()
-result = label_encoder.fit_transform(data)
+
+result = label_encoder.fit_transform(data) # encoder 레이블 하는 함수 
 print('레이블 전',data)
 print('레이블 후',result)
 
 
 
 #해결 2] 레이블 인코더 된것 숫자를 다시 문자화 LabelDecoder화
-decoder = label_encoder.inverse_transform(result)
+decoder = label_encoder.inverse_transform(result) # decode 는 inverse_transform 으로 한다.
 print('문자화 후',decoder)
 
 
@@ -41,7 +42,7 @@ print('문자화 후',decoder)
 레이블 전 ['cat', 'dog', 'mouse', '여름@#&']
 레이블 후 [0 1 2 3]
 문자화 후 ['cat' 'dog' 'mouse' '여름@#&']
-
+레이블을 하면 문자가 숫자로 바뀜. 데이터 정렬 기준은 알파벳 순인거 같음.
 '''
 
 
