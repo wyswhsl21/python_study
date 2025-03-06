@@ -22,15 +22,15 @@ import time
 
 #아이리스 붓꽃 iris 3종류 세토사 , 버시킬러, 버지니카
 #sepal :꽃받침 , petal: 꽃잎
-iris = sns.load_dataset('iris')
-print(iris)
-print()
-print(iris.info())
+iris = sns.load_dataset('iris') #Iris 데이터 셋 불러오기
+
+print(iris.info()) #데이터 셋 정보 확인
 # 
-species = iris['species'].unique()
+species = iris['species'].unique() #품종에 대한 중복 없는 
 print('품종의 unique 결과',species) #['setosa' 'versicolor' 'virginica']
 
-sepal_length_list = [iris[iris['species'] == s] ['sepal_width'] for s in species]
+sepal_length_list = [group['sepal_length'].values for _, group in iris.groupby('species')]
+
 print('sepal_length_list',sepal_length_list)
 print('품종의 sepal',)
 plt.figure(figsize=(12,7))

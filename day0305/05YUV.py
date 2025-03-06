@@ -25,7 +25,7 @@ import time
 #pip list
 
 import cv2
-img = cv2.imread('./images/snow.jpg',cv2.IMREAD_GRAYSCALE)
+img = cv2.imread('./images/snow.jpg')
 # if img is None:
 #     print('이미지 로드 읽기 실패했습니다 \n정확한 파일명 및 경로 및 확장자 꼭 확인하세요 \n')
 # else:

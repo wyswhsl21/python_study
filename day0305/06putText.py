@@ -26,14 +26,17 @@ import time
 
 import cv2
 print('')
-img = cv2.imread('./images/blank_500.jpg')
-img = np.full((450,350,3),0,dtype=np.uint8)
-cv2.circle(img,(100,100),70,(0,255,0),-1)
+
+#np 이용하여 이미지 배열 만드는 함수 (450,350) 크기의 3채널 BGR 이미지 생성
+#모든 픽셀 값을 0으로 설정 -> 검은색 배경
+# 8비트 정수형 데이터 사용
+img = np.full((450,350,3),0,dtype=np.uint8) 
+cv2.circle(img,(100,100),70,(0,255,0),-1) # 좌표, 원의 반지름, 색깔, 채우기 음수값인 경우 내부를 채움
 cv2.putText(img,'summer',(100,300),cv2.FONT_HERSHEY_TRIPLEX,2,(0,0,255))
-cv2.rectangle(img,(100,350),(300,450),(255,0,0),2)
+cv2.rectangle(img,(100,350),(300,450),(255,0,0),2) #왼쪽 위 좌표 , 오른쪽 아래 좌표, 파란색 BGR, 선 두께
 
 print(img)
-plt.imshow(img)
+plt.imshow(cv2.cvtColor(img,cv2.COLOR_BGR2RGB))
 plt.show()
 
 
