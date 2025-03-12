@@ -1,4 +1,3 @@
-# import matplotlib
 # import matplotlib.pyplot as plt        # 첫번째
 # from  matplotlib import pyplot as plt  # 두번째
 import matplotlib.pyplot as plt
@@ -18,6 +17,9 @@ import numpy as np
 import seaborn as sns 
 import time
 #--------------------------------------------------------------------------------------------
+
+
+
 
 
 

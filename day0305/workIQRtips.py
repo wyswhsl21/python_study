@@ -23,58 +23,59 @@ print(df)  ## 처음데이터 [244 rows x 7 columns]
 print(df.info()) 
 print()
 
-sns.countplot(x='day', data=df, palette='Set1')
-plt.show()
 
-sns.barplot(x='sex', y='tip', data=df, palette='Set2')
-plt.show()
+def remove_outliers(df,column,method='IQR',threshold=3):
+    df_cleaned = df.copy() #원본 데이터 보호
+    
+    if method == 'IQR':
 
+        #IQR 계산
+        Q1 = df_cleaned[column].quantile(0.25)
+        Q3 = df_cleaned[column].quantile(0.75)
 
-sns.boxplot(x='time', y='total_bill', data=df, palette='Set3')
-plt.show()
+        IQR = Q3 - Q1
 
-sns.histplot( x='total_bill', data=df, palette='Set1')
-plt.show()
+        #이상치 기준 설정
+        upper_limit = Q3 + 1.5 * IQR   # 46.43839435626422
+        lower_limit = Q1 - 1.5 * IQR    # -2.8224999999999945
+    elif method == 'STD':
 
-sns.scatterplot( x='total_bill', y='tip', data=df,  c='green')
-plt.show()
+        mean = np.mean(df_cleaned[column])
+        std = np.std(df_cleaned[column])
+
+        #이상치 기준 설정 
+        upper_limit = mean + threshold*std   # 46.43839435626422
+        lower_limit = mean - threshold*std   # -6.866509110362578
+    else:
+        raise ValueError("method 'IQR' 또는 'STD'만 가능합니다.")
+# 이상치 제거
+    df_cleaned = df_cleaned[(df_cleaned[column] >= lower_limit) & (df_cleaned[column] <= upper_limit)]
+    print(f"제거된 이상치 개수: {df.shape[0] - df_cleaned.shape[0]}")
+    return df_cleaned
 
 
 mean = np.mean(df['total_bill'])
 std = np.std(df['total_bill'])
 
-upper_limit = mean + 3*std   # 46.43839435626422
-lower_limit = mean - 3*std   # -6.866509110362578
-print('upper_limit ' , upper_limit)
-print('lower_limit ' , lower_limit)
-print()
 
 
-Q1 = df['total_bill'].quantile(0.25)
-Q3 = df['total_bill'].quantile(0.75)
-
-IQR = Q3 - Q1
-print('IQR =', IQR)
-uppper_limit = Q3 + 1.5 * IQR   # 46.43839435626422
-lower_limit = Q1 - 1.5 * IQR    # -2.8224999999999945
-print('upper_limit ' , upper_limit)
-print('lower_limit ' , lower_limit)
-print()
 
 
-# 처음데이터 [244 rows x 7 columns]
-# 이상치 조건 적용 
-cond = (df['total_bill'] > upper_limit) | (df['total_bill'] < lower_limit)
 
-# 데이터프레임[boolean]을 넣으면, True인 값만 나옴! 
-print(df[cond])
-print()
-print('- ' * 30)
 
-df = df[~cond]
-print(df[55:65])
-print(df[165:175])
-print()
+
+df_cleaned = remove_outliers(df,column='total_bill',method='STD')
+
+plt.figure(figsize=(12,5))
+plt.subplot(1,2,1)
+sns.boxplot(y=df['total_bill'])
+plt.title('이상 치 제거 전')
+
+plt.subplot(1,2,2)
+sns.boxplot(y=df_cleaned['total_bill'])
+plt.title('이상치 제거 후 ')
+plt.show()
+
 
 
 
